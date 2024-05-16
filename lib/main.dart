@@ -279,9 +279,12 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:later/dbHelper/mongodb.dart';
 import 'package:later/homepage.dart';
 
-void main(){
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  MongoDatabase.connect();
   runApp(MyApp());
 }
 
@@ -291,11 +294,23 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       title: 'Flutter Navigation example',
       theme: ThemeData(
-        primaryColor: Colors.green,
-        primarySwatch: Colors.blue,
-        backgroundColor: Colors.lightBlue,
+        primaryColor: Colors.green, colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: Colors.lightBlue),
       ),
-      home: HomePage(),
+      home: MyHomePage(),
     );
   }
 }
+
+class MyHomePage extends StatefulWidget{
+  MyHomePage({Key? key}) : super(key:key);
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+  }
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: SafeArea(child: Text("Hello")));
+  }
+}
+
