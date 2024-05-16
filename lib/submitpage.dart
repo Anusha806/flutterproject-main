@@ -49,3 +49,34 @@
 //     Navigator.pop(context); // Go back to the previous page after inserting data
 //   }
 // }
+
+
+
+import 'package:flutter/material.dart';
+
+class SubmitPage extends StatelessWidget {
+  final String name;
+  final String id;
+  final String email;
+
+  const SubmitPage({Key? key, required this.name, required this.id, required this.email}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Submit Page'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Name: $name'),
+            Text('ID: $id'),
+            Text('Email: $email'),
+          ],
+        ),
+      ),
+    );
+  }
+}

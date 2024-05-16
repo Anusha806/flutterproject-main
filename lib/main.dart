@@ -278,39 +278,64 @@
 
 
 
+// import 'package:flutter/material.dart';
+// import 'package:later/dbHelper/mongodb.dart';
+// import 'package:later/homepage.dart';
+//
+// void main()  {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   MongoDatabase.connect();
+//   runApp(MyApp());
+// }
+//
+// class MyApp extends StatelessWidget{
+//   @override
+//   Widget build(BuildContext context){
+//     return MaterialApp(
+//       title: 'Flutter Navigation example',
+//       theme: ThemeData(
+//         primaryColor: Colors.green, colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: Colors.lightBlue),
+//       ),
+//       home: MyHomePage(),
+//     );
+//   }
+// }
+//
+// class MyHomePage extends StatefulWidget{
+//   MyHomePage({Key? key}) : super(key:key);
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+//   }
+//
+// class _MyHomePageState extends State<MyHomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(body: SafeArea(child: Text("Hello")));
+//   }
+// }
+//
+
+
 import 'package:flutter/material.dart';
-import 'package:later/dbHelper/mongodb.dart';
-import 'package:later/homepage.dart';
+import 'dbHelper/mongodb.dart';
+import 'homepage.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  MongoDatabase.connect();
   runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await MongoDatabase.connect();
+
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Navigation example',
+      title: 'Flutter MongoDB Example',
       theme: ThemeData(
-        primaryColor: Colors.green, colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: Colors.lightBlue),
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
     );
   }
 }
-
-class MyHomePage extends StatefulWidget{
-  MyHomePage({Key? key}) : super(key:key);
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-  }
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(child: Text("Hello")));
-  }
-}
-
